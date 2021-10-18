@@ -11,5 +11,7 @@
     <!--    <bean id="userDao" factory-bean="factory" factory-method="getUserDao"></bean>-->
 
     <bean id="userDao" class="com.itheima.dao.impl.UserDaoImpl"></bean>
-    <bean id="userService" class="com.itheima.service.impl.UserServiceImpl"></bean>
+    <bean id="userService" class="com.itheima.service.impl.UserServiceImpl">
+        <property name="userDao" ref="userDao"></property>
+    </bean>
 </beans>

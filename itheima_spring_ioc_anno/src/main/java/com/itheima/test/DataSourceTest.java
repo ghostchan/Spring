@@ -5,8 +5,32 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.junit.Test;
 
 import java.sql.Connection;
+import java.util.ResourceBundle;
 
 public class DataSourceTest {
+
+    @Test
+    //测试手动创建c3p0数据源(加载properties配置文件)
+    public void test3() throws Exception {
+        //读取配置文件
+        ResourceBundle rb = ResourceBundle.getBundle("jdbc");
+        String driver = rb.getString("jdbc.driver");
+        String url = rb.getString("jdbc.url");
+        String username = rb.getString("jdbc.username");
+        String password = rb.getString("jdbc.password");
+
+        //创建数据源对象 设置连接参数
+        ComboPooledDataSource dataSource = new ComboPooledDataSource();
+        dataSource.setDriverClass(driver);
+        dataSource.setJdbcUrl(url);
+        dataSource.setUser(username);
+        dataSource.setPassword(password);
+
+        Connection connection = dataSource.getConnection();
+        System.out.println(connection);
+        connection.close();
+
+    }
 
     @Test
     //测试手动创建druid数据源

@@ -9,12 +9,12 @@ public class UserController {
     public static void main(String[] args) {
 //        UserService userService = new UserServiceImpl();
 //        userService.save();
-//        ApplicationContext app = new ClassPathXmlApplicationContext("applicationContext.xml");
-//        UserService userService = (UserService) app.getBean("userService");
-//        userService.save();
-
-        UserService userService=new UserServiceImpl();
+        ApplicationContext app = new ClassPathXmlApplicationContext("applicationContext.xml");
+        UserService userService = (UserService) app.getBean("userService");
         userService.save();
+
+//        UserService userService=new UserServiceImpl();
+//        userService.save();
     }
 
 

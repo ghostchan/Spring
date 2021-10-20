@@ -14,4 +14,10 @@
         <property name="user" value="${jdbc.username}"></property>
         <property name="password" value="${jdbc.password}"></property>
     </bean>
+
+    <bean id="userDao" class="com.itheima.dao.impl.UserDaoImpl"></bean>
+
+    <bean id="userService" class="com.itheima.service.impl.UserServiceImpl">
+        <property name="userDao" ref="userDao"></property>
+    </bean>
 </beans>

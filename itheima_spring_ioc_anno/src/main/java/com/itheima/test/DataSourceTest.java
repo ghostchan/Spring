@@ -3,11 +3,24 @@ package com.itheima.test;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.util.ResourceBundle;
 
 public class DataSourceTest {
+
+    @Test
+    //测试spring容器产生对象
+    public void test4() throws Exception {
+        ApplicationContext app = new ClassPathXmlApplicationContext("applicationContext.xml");
+        DataSource dataSource = app.getBean(DataSource.class);
+        Connection connection = dataSource.getConnection();
+        System.out.println(connection);
+        connection.close();
+    }
 
     @Test
     //测试手动创建c3p0数据源(加载properties配置文件)

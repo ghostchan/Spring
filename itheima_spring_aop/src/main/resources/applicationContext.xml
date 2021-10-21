@@ -18,7 +18,8 @@
         <!--声明切面-->
         <aop:aspect ref="myAspect">
             <!--切面：切点+通知-->
-            <aop:before method="before" pointcut="execution(public void com.itheima.aop.Target.save())"></aop:before>
+            <!--            <aop:before method="before" pointcut="execution(public void com.itheima.aop.Target.save())"></aop:before>-->
+            <aop:before method="before" pointcut="execution(* com.itheima.aop.*.*(..))"></aop:before>
         </aop:aspect>
     </aop:config>
 </beans>

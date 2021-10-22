@@ -10,9 +10,12 @@ import javax.servlet.ServletContextListener;
 public class ContextLoaderListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-        ApplicationContext app = new ClassPathXmlApplicationContext("applicationContext.xml");
-        //将Spring的应用上下文对象存出到ServletContext域中
         ServletContext servletContext = servletContextEvent.getServletContext();
+
+        //读取web.xml中的全局参数
+        String contextConfigLocation = servletContext.getInitParameter("contextConfigLocation");
+        ApplicationContext app = new ClassPathXmlApplicationContext(contextConfigLocation);
+        //将Spring的应用上下文对象存出到ServletContext域中
         servletContext.setAttribute("app", app);
         System.out.println("Spring容器创建完毕");
     }

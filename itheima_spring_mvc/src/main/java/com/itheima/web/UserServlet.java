@@ -1,8 +1,8 @@
 package com.itheima.web;
 
+import com.itheima.listener.WebApplicationContextUtils;
 import com.itheima.service.UserService;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -18,7 +18,8 @@ public class UserServlet extends HttpServlet {
 //        ApplicationContext app = new ClassPathXmlApplicationContext("applicationContext.xml");
 //        req.getServletContext();
         ServletContext servletContext = this.getServletContext();
-        ApplicationContext app = (ApplicationContext) servletContext.getAttribute("app");
+//        ApplicationContext app = (ApplicationContext) servletContext.getAttribute("app");
+        ApplicationContext app = WebApplicationContextUtils.getWebApplicationContext(servletContext);
         UserService userService = app.getBean(UserService.class);
         userService.save();
         System.out.println("test");

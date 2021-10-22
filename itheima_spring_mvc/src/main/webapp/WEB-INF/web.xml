@@ -7,12 +7,14 @@
     <!--全局初始化参数-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>applicationContext.xml</param-value>
+        <!--        <param-value>applicationContext.xml</param-value>-->
+        <param-value>classpath:applicationContext.xml</param-value>
     </context-param>
 
     <!--  配置监听器-->
     <listener>
-        <listener-class>com.itheima.listener.ContextLoaderListener</listener-class>
+        <!--        <listener-class>com.itheima.listener.ContextLoaderListener</listener-class>-->
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
     <servlet>

@@ -12,11 +12,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
+
+    @RequestMapping(value = "/quick18")
+    @ResponseBody
+    public void save18(Date date) {
+        System.out.println(date);
+    }
 
     //    http://localhost:8080/user/quick17/lisi
     @RequestMapping(value = "/quick17/{username}")

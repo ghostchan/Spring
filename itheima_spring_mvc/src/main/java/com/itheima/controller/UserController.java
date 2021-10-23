@@ -2,6 +2,7 @@ package com.itheima.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.itheima.domain.User;
+import com.itheima.domain.VO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,12 @@ import java.util.Arrays;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+
+    @RequestMapping(value = "/quick14")
+    @ResponseBody
+    public void save14(VO vo) {
+        System.out.println(vo);
+    }
 
     @RequestMapping(value = "/quick13")
     @ResponseBody

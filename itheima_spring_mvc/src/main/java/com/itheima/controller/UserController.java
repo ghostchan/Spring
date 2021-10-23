@@ -1,6 +1,7 @@
 package com.itheima.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -8,6 +9,20 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+
+    @RequestMapping(value = "/quick4")
+    public String save4(Model model) {
+        model.addAttribute("username", "博学谷");
+        return "success";
+    }
+
+
+    @RequestMapping(value = "/quick3")
+    public ModelAndView save3(ModelAndView modelAndView) {
+        modelAndView.addObject("username", "itheima");
+        modelAndView.setViewName("success");
+        return modelAndView;
+    }
 
     @RequestMapping(value = "/quick2")
     public ModelAndView save2() {
@@ -17,7 +32,7 @@ public class UserController {
          */
         ModelAndView modelAndView = new ModelAndView();
         //设置模型数据
-        modelAndView.addObject("username","itcast");
+        modelAndView.addObject("username", "itcast");
         //设置视图名称
         modelAndView.setViewName("success");
         return modelAndView;

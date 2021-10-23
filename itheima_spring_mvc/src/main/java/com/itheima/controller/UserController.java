@@ -12,6 +12,9 @@ public class UserController {
     @RequestMapping(value = "/quick", method = RequestMethod.GET, params = {"username"})
     public String save() {
         System.out.println("Controller save running...");
-        return "/success.jsp";
+//        return "forward:/success.jsp";
+//        return "redirect:/success.jsp";
+//        return "/jsp/success.jsp";
+        return "success";
     }
 }

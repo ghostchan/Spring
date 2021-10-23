@@ -6,6 +6,7 @@ import com.itheima.domain.VO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,9 +21,16 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
 
+    @RequestMapping(value = "/quick22")
+    @ResponseBody
+    public void save22(String username, MultipartFile uploadFile) {
+        System.out.println(username);
+        System.out.println(uploadFile);
+    }
+
     @RequestMapping(value = "/quick21")
     @ResponseBody
-    public void save21(@CookieValue(value="JSESSIONID") String jsessionId) {
+    public void save21(@CookieValue(value = "JSESSIONID") String jsessionId) {
         System.out.println(jsessionId);
     }
 

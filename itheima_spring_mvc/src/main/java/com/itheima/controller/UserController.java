@@ -1,5 +1,7 @@
 package com.itheima.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.itheima.domain.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +16,25 @@ import java.io.IOException;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+
+
+    @RequestMapping(value = "/quick9")
+    @ResponseBody
+    public String save9() throws IOException {
+        User user = new User();
+        user.setUsername("lisi");
+        user.setAge(30);
+        //使用json的转换工具将对象转换成json格式字符串再返回
+        ObjectMapper objectMapper = new ObjectMapper();
+        String json = objectMapper.writeValueAsString(user);
+        return json;
+    }
+
+    @RequestMapping(value = "/quick8")
+    @ResponseBody
+    public String save8() {
+        return "{\"username\":\"zhansan\",\"age\":18}";
+    }
 
     @RequestMapping(value = "/quick7")
     @ResponseBody //告知SpringMVC框架 不进行视图跳转 直接进行数据响应

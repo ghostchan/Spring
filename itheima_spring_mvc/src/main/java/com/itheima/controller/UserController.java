@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Date;
@@ -23,9 +24,12 @@ public class UserController {
 
     @RequestMapping(value = "/quick22")
     @ResponseBody
-    public void save22(String username, MultipartFile uploadFile) {
+    public void save22(String username, MultipartFile uploadFile) throws IOException {
         System.out.println(username);
         System.out.println(uploadFile);
+        //获得上传文件的名称
+        String originalFilename = uploadFile.getOriginalFilename();
+        uploadFile.transferTo(new File("/Users/jinn/Desktop/33/" + originalFilename));
     }
 
     @RequestMapping(value = "/quick21")

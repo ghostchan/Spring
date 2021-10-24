@@ -24,19 +24,20 @@
     <!--4、组件扫描  扫描Controller-->
     <context:component-scan base-package="com.itheima.controller"/>
 
+    <!--配置异常处理器-->
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="defaultErrorView" value="error"/>
+        <property name="exceptionMappings">
+            <map>
+                <entry key="java.lang.ClassCastException" value="error1"/>
+                <entry key="com.itheima.exception.MyException" value="error2"/>
+            </map>
+        </property>
+    </bean>
 
-    <!--配置拦截器-->
-   <!-- <mvc:interceptors>
-        <mvc:interceptor>
-            &lt;!&ndash;对哪些资源执行拦截操作&ndash;&gt;
-            <mvc:mapping path="/**"/>
-            <bean class="com.itheima.interceptor.MyInterceptor2"/>
-        </mvc:interceptor>
-        <mvc:interceptor>
-            &lt;!&ndash;对哪些资源执行拦截操作&ndash;&gt; &ndash;&gt;
-            <mvc:mapping path="/**"/>
-            <bean class="com.itheima.interceptor.MyInterceptor1"/>
-        </mvc:interceptor>
-    </mvc:interceptors>-->
+
+    <!--自定义异常处理器-->
+    <bean class="com.itheima.resolver.MyExceptionResolver"/>
+
 
 </beans>

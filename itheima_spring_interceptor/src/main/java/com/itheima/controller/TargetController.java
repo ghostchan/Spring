@@ -2,6 +2,7 @@ package com.itheima.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -14,5 +15,10 @@ public class TargetController {
         modelAndView.addObject("name", "itcast");
         modelAndView.setViewName("index");
         return modelAndView;
+    }
+
+    @RequestMapping("/test")
+    public void test(@RequestParam String aaa){
+        System.out.println(aaa);
     }
 }

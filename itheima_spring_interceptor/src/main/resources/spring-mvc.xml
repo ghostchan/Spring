@@ -27,13 +27,13 @@
 
     <!--配置拦截器-->
     <mvc:interceptors>
-     <!--   <mvc:interceptor>
-            &lt;!&ndash;对哪些资源执行拦截操作&ndash;&gt;
-            <mvc:mapping path="/**"/>
-            <bean class="com.itheima.interceptor.MyInterceptor2"/>
-        </mvc:interceptor>-->
         <mvc:interceptor>
             <!--对哪些资源执行拦截操作-->
+            <mvc:mapping path="/**"/>
+            <bean class="com.itheima.interceptor.MyInterceptor2"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <!--对哪些资源执行拦截操作&ndash;&gt; -->
             <mvc:mapping path="/**"/>
             <bean class="com.itheima.interceptor.MyInterceptor1"/>
         </mvc:interceptor>

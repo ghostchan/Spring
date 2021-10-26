@@ -15,7 +15,7 @@ public class JdbcTemplateTest {
     public void test2() {
         ApplicationContext app = new ClassPathXmlApplicationContext("applicationContext.xml");
         JdbcTemplate jdbcTemplate = app.getBean(JdbcTemplate.class);
-        int row = jdbcTemplate.update("insert into account values(?,?)", "zhangsan", 5000);
+        int row = jdbcTemplate.update("insert into account values(?,?)", "lisi", 5000);
         System.out.println(row);
     }
 

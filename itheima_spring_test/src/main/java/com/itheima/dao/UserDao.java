@@ -10,4 +10,8 @@ public interface UserDao {
     List<User> findAll();
 
     List<Role> findRoleByUserId(Long id);
+
+    Long save(User user);
+
+    void saveUserRoleRel(Long id, Long[] roleIds);
 }

@@ -3,7 +3,7 @@
 <mapper namespace="userMapper">
 
     <!--    删除操作-->
-    <delete id="delete" parameterType="java.lang.Integer">
+    <delete id="delete" parameterType="int">
         delete
         from user
         where id = #{abc}
@@ -24,7 +24,7 @@
     </insert>
 
     <!--    查询操作-->
-    <select id="findAll" resultType="com.itheima.domain.User">
+    <select id="findAll" resultType="user">
         select *
         from user
     </select>

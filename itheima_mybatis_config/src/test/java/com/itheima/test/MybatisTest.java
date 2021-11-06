@@ -14,6 +14,23 @@ import java.util.Date;
 
 public class MybatisTest {
 
+
+    @Test
+    public void test2() throws IOException {
+        InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+
+        User user = mapper.findById(0);
+        System.out.println("user中的birthday: " + user.getBirthday());
+
+        sqlSession.close();
+
+
+    }
+
     @Test
     public void test1() throws IOException {
         InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");

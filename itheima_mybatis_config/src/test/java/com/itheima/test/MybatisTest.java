@@ -1,5 +1,6 @@
 package com.itheima.test;
 
+import com.github.pagehelper.PageHelper;
 import com.itheima.domain.User;
 import com.itheima.mapper.UserMapper;
 import org.apache.ibatis.io.Resources;
@@ -22,6 +23,9 @@ public class MybatisTest {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+
+        //设置分页相关参数 当前页+每页显示的条数
+        PageHelper.startPage(2, 3);
 
         List<User> userList = mapper.findAll();
         for (User user : userList) {

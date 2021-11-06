@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MapperTest {
@@ -28,7 +29,14 @@ public class MapperTest {
         condition.setUsername("zhangsan");
 //        condition.setPassword("123");
 
-        List<User> userList = mapper.findByCondition(condition);
+//        List<User> userList = mapper.findByCondition(condition);
+
+        //模拟ids的数据
+        List<Integer> ids = new ArrayList<>();
+        ids.add(1);
+        ids.add(2);
+
+        List<User> userList = mapper.findByIds(ids);
 
         System.out.println(userList);
     }

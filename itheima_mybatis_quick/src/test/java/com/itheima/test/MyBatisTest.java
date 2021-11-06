@@ -65,7 +65,7 @@ public class MyBatisTest {
 
         //模拟user对象
         User user = new User();
-        user.setUsername("tom");
+        user.setUsername("xxx");
         user.setPassword("abc");
 
         //获得核心配置文件
@@ -73,12 +73,12 @@ public class MyBatisTest {
         //获得session工厂对象
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
         //获得session会话对象
-        SqlSession sqlSession = sqlSessionFactory.openSession();
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
         //执行操作 参数: namespace+id
         sqlSession.insert("userMapper.save", user);
 
         //mybatis执行更新操作 提交事务
-        sqlSession.commit();
+//        sqlSession.commit();
         //释放资源
         sqlSession.close();
 
@@ -96,6 +96,23 @@ public class MyBatisTest {
         //执行操作 参数: namespace+id
         List<User> userList = sqlSession.selectList("userMapper.findAll");
         System.out.println(userList);
+        //释放资源
+        sqlSession.close();
+
+    }
+
+    @Test
+    //查询一个对象
+    public void test5() throws IOException {
+        //获得核心配置文件
+        InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
+        //获得session工厂对象
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
+        //获得session会话对象
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        //执行操作 参数: namespace+id
+        User user = sqlSession.selectOne("userMapper.findById", 1);
+        System.out.println(user);
         //释放资源
         sqlSession.close();
 

@@ -26,7 +26,7 @@ public class MapperTest {
         User condition = new User();
         condition.setId(1);
         condition.setUsername("zhangsan");
-        condition.setPassword("123");
+//        condition.setPassword("123");
 
         List<User> userList = mapper.findByCondition(condition);
 

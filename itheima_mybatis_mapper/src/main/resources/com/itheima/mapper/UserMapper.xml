@@ -5,7 +5,18 @@
     <select id="findByCondition" parameterType="user" resultType="user">
         select *
         from user
-        where id=#{id} and username=#{username} and password=#{password}
+        <where>
+            <if test="id!=0">
+                and id=#{id}
+            </if>
+            <if test="username!=null">
+                and username=#{username}
+            </if>
+            <if test="password!=null">
+                and password=#{password}
+            </if>
+        </where>
+
     </select>
 
 

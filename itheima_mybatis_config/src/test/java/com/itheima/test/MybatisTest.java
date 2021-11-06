@@ -1,6 +1,7 @@
 package com.itheima.test;
 
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.itheima.domain.User;
 import com.itheima.mapper.UserMapper;
 import org.apache.ibatis.io.Resources;
@@ -31,6 +32,18 @@ public class MybatisTest {
         for (User user : userList) {
             System.out.println(user);
         }
+
+        //获得与分页相关参数
+        PageInfo<User> pageInfo = new PageInfo<>(userList);
+        System.out.println("当前页: " + pageInfo.getPageNum());
+        System.out.println("每页显示条数: " + pageInfo.getPageSize());
+        System.out.println("总条数: " + pageInfo.getTotal());
+        System.out.println("总页数: " + pageInfo.getPages());
+        System.out.println("上一页: " + pageInfo.getPrePage());
+        System.out.println("下一页: " + pageInfo.getNextPage());
+        System.out.println("是否是第一个: " + pageInfo.isIsFirstPage());
+        System.out.println("是否是最后一个: " + pageInfo.isIsLastPage());
+
 
         sqlSession.close();
     }
@@ -69,7 +82,6 @@ public class MybatisTest {
 
         sqlSession.commit();
         sqlSession.close();
-
 
     }
 

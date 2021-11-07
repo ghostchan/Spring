@@ -23,10 +23,10 @@
         </environment>
     </environments>
 
-    <!--    加载映射文件-->
+    <!--加载映射关系-->
     <mappers>
-        <mapper resource="com/itheima/mapper/UserMapper.xml"></mapper>
+        <!--指定接口所在的包-->
+        <package name="com.itheima.mapper"/>
     </mappers>
-
 
 </configuration>

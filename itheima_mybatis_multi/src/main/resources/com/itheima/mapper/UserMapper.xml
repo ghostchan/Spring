@@ -25,4 +25,29 @@
              orders o
         where u.id = o.uid
     </select>
+
+
+    <resultMap id="userRoleMap" type="user">
+        <!-- user的信息-->
+        <id column="userid" property="id"></id>
+        <result column="username" property="username"></result>
+        <result column="password" property="password"></result>
+        <result column="birthday" property="birthday"></result>
+
+        <!--user内部的roleList信息-->
+        <collection property="roleList" ofType="role">
+            <id column="roleid" property="id"></id>
+            <result column="roleName" property="roleName"></result>
+            <result column="roleDesc" property="roleDesc"></result>
+        </collection>
+
+    </resultMap>
+    <select id="findUserAndRoleAll" resultMap="userRoleMap">
+        SELECT *
+        FROM `user` u,
+             sys_user_role ur,
+             sys_role r
+        WHERE u.id = ur.userid
+          AND ur.roleid = r.id
+    </select>
 </mapper>

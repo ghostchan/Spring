@@ -36,4 +36,18 @@ public interface UserMapper {
             )
     })
     public List<User> findUserAndOrderAll();
+
+    @Select("select * from user")
+    @Results({
+            @Result(id = true, column = "id", property = "id"),
+            @Result(column = "username", property = "username"),
+            @Result(column = "password", property = "password"),
+            @Result(
+                    property = "roleList",
+                    column = "id",
+                    javaType = List.class,
+                    many = @Many(select = "com.itheima.mapper.RoleMapper.findByUid")
+            )
+    })
+    public List<User> findUserAndRoleAll();
 }

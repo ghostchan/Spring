@@ -9,18 +9,19 @@ public class User {
     private String password;
     private Date birthday;
 
-    //描述的是当前用户具有的订单
-    private List<Order> orderList;
+    //当前用户具备哪些角色
+    private List<Role> roleList;
 
-    public User() {
+    //描述的是当前用户具有的订单
+//    private List<Order> orderList;
+
+
+    public List<Role> getRoleList() {
+        return roleList;
     }
 
-    public User(int id, String username, String password, Date birthday, List<Order> orderList) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.birthday = birthday;
-        this.orderList = orderList;
+    public void setRoleList(List<Role> roleList) {
+        this.roleList = roleList;
     }
 
     public int getId() {
@@ -55,14 +56,6 @@ public class User {
         this.birthday = birthday;
     }
 
-    public List<Order> getOrderList() {
-        return orderList;
-    }
-
-    public void setOrderList(List<Order> orderList) {
-        this.orderList = orderList;
-    }
-
     @Override
     public String toString() {
         return "User{" +
@@ -70,7 +63,7 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", birthday=" + birthday +
-                ", orderList=" + orderList +
+                ", roleList=" + roleList +
                 '}';
     }
 }

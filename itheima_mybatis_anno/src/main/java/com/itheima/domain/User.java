@@ -1,6 +1,7 @@
 package com.itheima.domain;
 
 import java.util.Date;
+import java.util.List;
 
 public class User {
     private int id;
@@ -8,14 +9,18 @@ public class User {
     private String password;
     private Date birthday;
 
+    //描述的是当前用户具有的订单
+    private List<Order> orderList;
+
     public User() {
     }
 
-    public User(int id, String username, String password, Date birthday) {
+    public User(int id, String username, String password, Date birthday, List<Order> orderList) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.birthday = birthday;
+        this.orderList = orderList;
     }
 
     public int getId() {
@@ -50,6 +55,14 @@ public class User {
         this.birthday = birthday;
     }
 
+    public List<Order> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -57,6 +70,7 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", birthday=" + birthday +
+                ", orderList=" + orderList +
                 '}';
     }
 }

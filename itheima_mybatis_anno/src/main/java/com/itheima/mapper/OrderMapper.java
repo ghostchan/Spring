@@ -11,6 +11,9 @@ import java.util.List;
 
 public interface OrderMapper {
 
+    @Select("select * from orders where uid=#{uid}")
+    public List<Order> findByUid(int uid);
+
     @Select("select * from orders")
     @Results({
             @Result(column = "id", property = "id"),

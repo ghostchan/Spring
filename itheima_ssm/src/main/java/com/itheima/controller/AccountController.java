@@ -18,7 +18,7 @@ public class AccountController {
     private AccountService accountService;
 
     //保存
-    @RequestMapping("/save")
+    @RequestMapping(value = "/save", produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String save(Account account) {
         accountService.save(account);
@@ -26,6 +26,7 @@ public class AccountController {
     }
 
     //查询
+    @RequestMapping("/findAll")
     public ModelAndView findAll() {
         List<Account> accountList = accountService.findAll();
         ModelAndView modelAndView = new ModelAndView();

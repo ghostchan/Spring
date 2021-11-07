@@ -10,10 +10,23 @@
         <id column="oid" property="id"></id>
         <result column="ordertime" property="ordertime"></result>
         <result column="total" property="total"></result>
-        <result column="uid" property="user.id"></result>
-        <result column="username" property="user.username"></result>
-        <result column="password" property="user.password"></result>
-        <result column="birthday" property="user.birthday"></result>
+        <!--        <result column="uid" property="user.id"></result>-->
+        <!--        <result column="username" property="user.username"></result>-->
+        <!--        <result column="password" property="user.password"></result>-->
+        <!--        <result column="birthday" property="user.birthday"></result>-->
+
+        <!--
+            当前实体(order)中的属性名称(private User user)
+            javaType:当前实体(order)中的属性的类型(User)
+        -->
+        <association property="user" javaType="user">
+            <id column="uid" property="id"></id>
+            <result column="username" property="username"></result>
+            <result column="password" property="password"></result>
+            <result column="birthday" property="birthday"></result>
+        </association>
+
+
     </resultMap>
 
     <select id="findAll" resultMap="orderMap">
